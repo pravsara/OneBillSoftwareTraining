@@ -1,0 +1,35 @@
+mysql> select * from student;
++-------+--------+
+| Name  | Gender |
++-------+--------+
+| Herry | Male   |
+| Mahi  | Female |
++-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> delete from student where name = 'Mahi';
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from student;
++-------+--------+
+| Name  | Gender |
++-------+--------+
+| Herry | Male   |
++-------+--------+
+1 row in set (0.00 sec)
+
+mysql> truncate table student;
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> select * from student;
+Empty set (0.00 sec)
+
+mysql> describe student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Name   | varchar(20) | YES  |     | NULL    |       |
+| Gender | char(6)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+

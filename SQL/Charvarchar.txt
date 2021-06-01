@@ -1,0 +1,26 @@
+mysql> CREATE TABLE Student(Name VARCHAR(20), Gender CHAR(6));
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> INSERT into Student VALUES('Herry', 'Male');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT into Student VALUES('Mahi', 'Female');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT LENGTH(Name) FROM Student;
++--------------+
+| LENGTH(Name) |
++--------------+
+|            5 |
+|            4 |
++--------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT LENGTH(Gender) FROM Student;
++----------------+
+| LENGTH(Gender) |
++----------------+
+|              6 |
+|              6 |
++----------------+
+2 rows in set (0.00 sec)

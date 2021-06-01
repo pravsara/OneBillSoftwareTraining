@@ -1,0 +1,95 @@
+mysql> select * from person;
++----+---------+--------+-------------------+
+| id | name    | salary | email             |
++----+---------+--------+-------------------+
+|  1 | Rahul   |  25000 | rahul@gmail.com   |
+|  2 | Praveen |  30000 | praveen@gmail.com |
+|  3 | Mohan   |  35000 | mohan@gmail.com   |
+|  4 | Gugan   |  40000 | gugan@gmail.com   |
++----+---------+--------+-------------------+
+4 rows in set (0.00 sec)
+
+mysql> select count(id) from person having avg(salary) > 30000;
++-----------+
+| count(id) |
++-----------+
+|         4 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select count(id) from person having avg(salary) > 40000;
+Empty set (0.00 sec)
+
+mysql> alter table person add column country varchar(20);
+Query OK, 0 rows affected (0.97 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from person;
++----+---------+--------+-------------------+---------+
+| id | name    | salary | email             | country |
++----+---------+--------+-------------------+---------+
+|  1 | Rahul   |  25000 | rahul@gmail.com   | NULL    |
+|  2 | Praveen |  30000 | praveen@gmail.com | NULL    |
+|  3 | Mohan   |  35000 | mohan@gmail.com   | NULL    |
+|  4 | Gugan   |  40000 | gugan@gmail.com   | NULL    |
++----+---------+--------+-------------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> update person set country = "UK" where id = 1;
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update person set country = "US" where id = 2;
+Query OK, 1 row affected (0.15 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update person set country = "Japan" where id = 3;
+Query OK, 1 row affected (0.15 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update person set country = "India" where id = 4;
+Query OK, 1 row affected (0.15 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from person;
++----+---------+--------+-------------------+---------+
+| id | name    | salary | email             | country |
++----+---------+--------+-------------------+---------+
+|  1 | Rahul   |  25000 | rahul@gmail.com   | UK      |
+|  2 | Praveen |  30000 | praveen@gmail.com | US      |
+|  3 | Mohan   |  35000 | mohan@gmail.com   | Japan   |
+|  4 | Gugan   |  40000 | gugan@gmail.com   | India   |
++----+---------+--------+-------------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> update person set country = "India" where id = 3;
+Query OK, 1 row affected (0.19 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from person;
++----+---------+--------+-------------------+---------+
+| id | name    | salary | email             | country |
++----+---------+--------+-------------------+---------+
+|  1 | Rahul   |  25000 | rahul@gmail.com   | UK      |
+|  2 | Praveen |  30000 | praveen@gmail.com | US      |
+|  3 | Mohan   |  35000 | mohan@gmail.com   | India   |
+|  4 | Gugan   |  40000 | gugan@gmail.com   | India   |
++----+---------+--------+-------------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select * from person group by country having count(country) > 1;
++----+-------+--------+-----------------+---------+
+| id | name  | salary | email           | country |
++----+-------+--------+-----------------+---------+
+|  3 | Mohan |  35000 | mohan@gmail.com | India   |
++----+-------+--------+-----------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select avg(salary) from person group by country having count(country) > 1;
++-------------+
+| avg(salary) |
++-------------+
+|  37500.0000 |
++-------------+
+1 row in set (0.00 sec)
+

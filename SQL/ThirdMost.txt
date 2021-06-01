@@ -1,0 +1,39 @@
+ 
+mysql> select * from employee;
++-------+----------+-----------------+---------+------------+------------+--------+------------+-------+-------------------+
+| empid | name     | email           | mobile  | doj        | dob        | gender | experience | dept  | designation       |
++-------+----------+-----------------+---------+------------+------------+--------+------------+-------+-------------------+
+|     1 | Ragul    | r@r.com         | 2321522 | 2015-11-09 | 1998-12-30 | m      |          6 | A     | Software Engineer |
+|     2 | Rohit    | r@r.in          | 2321552 | 2014-11-09 | 1983-10-30 | m      |          7 | B     | Tester            |
+|     3 | Rajath   | ra@r.in         | 2354552 | 2014-11-09 | 1975-10-30 | m      |         10 | B     | Tester            |
+|     4 | Rakesh   | ra@r.in         | 2358522 | 2019-11-09 | 1999-10-30 | m      |          3 | A     | Software Engineer |
+|     5 | Reshma   | reshma@r.in     | 2558522 | 2020-11-09 | 1980-10-30 | f      |          8 | B     | Software Engineer |
+|     6 | Raksitha | rr@gmail.com    | 2458522 | 2018-11-09 | 1990-10-30 | f      |          6 | C     | Admin             |
+|     7 | Gokul    | gokul@gmail.com | 1234    | 2020-08-12 | 1997-09-12 | male   |          1 | Sales | Assistant Manager |
++-------+----------+-----------------+---------+------------+------------+--------+------------+-------+-------------------+
+7 rows in set (0.00 sec)
+
+mysql> delete from employee where empid = 7;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from employee;
++-------+----------+--------------+---------+------------+------------+--------+------------+------+-------------------+
+| empid | name     | email        | mobile  | doj        | dob        | gender | experience | dept | designation       |
++-------+----------+--------------+---------+------------+------------+--------+------------+------+-------------------+
+|     1 | Ragul    | r@r.com      | 2321522 | 2015-11-09 | 1998-12-30 | m      |          6 | A    | Software Engineer |
+|     2 | Rohit    | r@r.in       | 2321552 | 2014-11-09 | 1983-10-30 | m      |          7 | B    | Tester            |
+|     3 | Rajath   | ra@r.in      | 2354552 | 2014-11-09 | 1975-10-30 | m      |         10 | B    | Tester            |
+|     4 | Rakesh   | ra@r.in      | 2358522 | 2019-11-09 | 1999-10-30 | m      |          3 | A    | Software Engineer |
+|     5 | Reshma   | reshma@r.in  | 2558522 | 2020-11-09 | 1980-10-30 | f      |          8 | B    | Software Engineer |
+|     6 | Raksitha | rr@gmail.com | 2458522 | 2018-11-09 | 1990-10-30 | f      |          6 | C    | Admin             |
++-------+----------+--------------+---------+------------+------------+--------+------------+------+-------------------+
+6 rows in set (0.00 sec)
+
+mysql> select  max(experience) from employee where experience < (select max(experience) from employee where experience < (select max(experience) from employee)); 
++-----------------+
+| max(experience) |
++-----------------+
+|               7 |
++-----------------+
+1 row in set (0.00 sec)
+
